@@ -56,7 +56,7 @@ set ruler
 set nowrap
 set hlsearch
 
-set backupdir=~/.vim_backup
+set backupdir=~/.vim/backups
 
 "Auto change-dir
 "set acd
