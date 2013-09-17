@@ -1,0 +1,6 @@
+[submodule "bundle/vim-colorshcemes"]
+	path = bundle/vim-colorshcemes
+	url = git@github.com:flazz/vim-colorschemes.git
+[submodule "vim-pathogen"]
+	path = vim-pathogen
+	url = https://github.com/tpope/vim-pathogen
