@@ -1,4 +1,8 @@
+" Pathogen vim bundle manager
 execute pathogen#infect()
+execute pathogen#helptags() 
+
+syntax on
 filetype plugin indent on
 
 set nocompatible
@@ -14,6 +18,20 @@ set background=dark
 
 let g:molokai_original = 1
 colorscheme molokai
+
+" Favorite colorschemes
+"bvemu
+""getafe
+"thor
+""kellys
+"badwolf
+""blackdust
+"molokai
+""BusyBee
+"twilight
+""mustang
+"Tomorrow-Night-Eighties
+
 set guifont=monofur\ 11
 "set guifont=Monospace\ Bold\ 8
 "set guifont=-*-monofur-plain-*-*-*-9-*-*-*-*-*-*-*
@@ -212,6 +230,7 @@ let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
 map <F4> :TlistToggle<cr>
 map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
+nmap <F6> :TagbarToggle<CR>
 se tags+=~/.ctags/tags
 
 
@@ -220,3 +239,5 @@ au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
 nnoremap ` :GundoToggle<CR>
 
 command! -range SwapArgs <line1>,<line2>s/(\([^,]\+\),\s*\([^,)]\+\)/(\2, \1/ | let @/ = ""
+
+map <C-n> :NERDTreeToggle<CR>
