@@ -4,3 +4,21 @@
 [submodule "vim-pathogen"]
 	path = vim-pathogen
 	url = https://github.com/tpope/vim-pathogen
+[submodule "bundle/yaml-vim"]
+	path = bundle/yaml-vim
+	url = git@github.com:ingydotnet/yaml-vim.git
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "bundle/vim-matlab"]
+	path = bundle/vim-matlab
+	url = git@github.com:sgeb/vim-matlab
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = git@github.com:tpope/vim-markdown.git
+[submodule "bundle/vim-latex-suite"]
+	path = bundle/vim-latex-suite
+	url = git@github.com:gerw/vim-latex-suite.git
+[submodule "bundle/vim-latex-live-preview"]
+	path = bundle/vim-latex-live-preview
+	url = git@github.com:xuhdev/vim-latex-live-preview.git
