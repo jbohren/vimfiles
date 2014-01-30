@@ -43,6 +43,8 @@ set guioptions-=r  "remove right-hand scroll bar
 set foldmethod=syntax
 set foldlevel=1000
 
+let javaScript_fold=1         " JavaScript
+
 set expandtab
 set autoindent
 set tabstop=2
