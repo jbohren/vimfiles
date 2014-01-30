@@ -14,6 +14,8 @@ set cinoptions=g0
 set cino+=(0,W4,t0
 "set cinoptions=:0,l1,t0,g0,(0
 
+set complete=.,w,b,u,t,i
+
 set background=dark
 
 let g:molokai_original = 1
@@ -236,7 +238,7 @@ nmap <F6> :TagbarToggle<CR>
 se tags+=~/.ctags/tags
 
 
-au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
+"au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
 
 nnoremap ` :GundoToggle<CR>
 
