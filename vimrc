@@ -245,3 +245,18 @@ nnoremap ` :GundoToggle<CR>
 command! -range SwapArgs <line1>,<line2>s/(\([^,]\+\),\s*\([^,)]\+\)/(\2, \1/ | let @/ = ""
 
 map <C-n> :NERDTreeToggle<CR>
+
+"AirLine
+set laststatus=2
+
+map <F2> :Bufferlist<CR>
+
+let g:replay_record = 1
+let g:replay_speed = 300
+
+function! FU()
+  r~/.vim/fu.txt
+endfunction
+
+nmap  :call FU()<CR>
+
