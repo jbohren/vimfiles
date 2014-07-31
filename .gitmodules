@@ -31,3 +31,6 @@
 [submodule "bundle/vim-record"]
 	path = bundle/vim-record
 	url = git@github.com:chrisbra/Replay.git
+[submodule "bundle/vim-ros"]
+	path = bundle/vim-ros
+	url = https://github.com/jbohren-forks/vim-ros.git
