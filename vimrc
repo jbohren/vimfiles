@@ -6,6 +6,7 @@ syntax on
 filetype plugin indent on
 
 set nocompatible
+set timeout timeoutlen=3000 ttimeoutlen=100
 "source $VIMRUNTIME/vimrc_example.vim
 "source $VIMRUNTIME/mswin.vim
 "behave mswin
@@ -45,7 +46,7 @@ set guioptions-=r  "remove right-hand scroll bar
 set foldmethod=syntax
 set foldlevel=1000
 
-let javaScript_fold=1         " JavaScript
+"let javaScript_fold=1         " JavaScript
 
 set expandtab
 set autoindent
@@ -262,3 +263,6 @@ nmap  :call FU()<CR>
 
 "Zenmode
 nnoremap <silent> <leader>z :Goyo<cr>
+let g:goyo_margin_top = 4
+let g:goyo_margin_bottom = 4
+let g:goyo_width = 60
