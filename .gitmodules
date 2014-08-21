@@ -34,3 +34,9 @@
 [submodule "bundle/vim-ros"]
 	path = bundle/vim-ros
 	url = https://github.com/jbohren-forks/vim-ros.git
+[submodule "bundle/vim-zenmode"]
+	path = bundle/vim-zenmode
+	url = git://github.com/mmai/vim-zenmode.git
+[submodule "bundle/vim-goyo"]
+	path = bundle/vim-goyo
+	url = git@github.com:junegunn/goyo.vim.git

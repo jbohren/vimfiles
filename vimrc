@@ -260,3 +260,5 @@ endfunction
 
 nmap  :call FU()<CR>
 
+"Zenmode
+nnoremap <silent> <leader>z :Goyo<cr>
