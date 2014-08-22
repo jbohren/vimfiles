@@ -245,3 +245,5 @@ nnoremap ` :GundoToggle<CR>
 command! -range SwapArgs <line1>,<line2>s/(\([^,]\+\),\s*\([^,)]\+\)/(\2, \1/ | let @/ = ""
 
 map <C-n> :NERDTreeToggle<CR>
+
+let g:loaded_ros = 1
