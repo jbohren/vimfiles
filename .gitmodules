@@ -25,6 +25,18 @@
 [submodule "bundle/vim-less"]
 	path = bundle/vim-less
 	url = https://github.com/groenewege/vim-less.git
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "bundle/vim-record"]
+	path = bundle/vim-record
+	url = git@github.com:chrisbra/Replay.git
 [submodule "bundle/vim-ros"]
 	path = bundle/vim-ros
 	url = https://github.com/jbohren-forks/vim-ros.git
+[submodule "bundle/vim-zenmode"]
+	path = bundle/vim-zenmode
+	url = git://github.com/mmai/vim-zenmode.git
+[submodule "bundle/vim-goyo"]
+	path = bundle/vim-goyo
+	url = git@github.com:junegunn/goyo.vim.git

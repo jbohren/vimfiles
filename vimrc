@@ -6,6 +6,7 @@ syntax on
 filetype plugin indent on
 
 set nocompatible
+set timeout timeoutlen=3000 ttimeoutlen=100
 "source $VIMRUNTIME/vimrc_example.vim
 "source $VIMRUNTIME/mswin.vim
 "behave mswin
@@ -45,7 +46,7 @@ set guioptions-=r  "remove right-hand scroll bar
 set foldmethod=syntax
 set foldlevel=1000
 
-let javaScript_fold=1         " JavaScript
+"let javaScript_fold=1         " JavaScript
 
 set expandtab
 set autoindent
@@ -247,3 +248,22 @@ command! -range SwapArgs <line1>,<line2>s/(\([^,]\+\),\s*\([^,)]\+\)/(\2, \1/ | 
 map <C-n> :NERDTreeToggle<CR>
 
 let g:loaded_ros = 1
+"AirLine
+set laststatus=2
+
+map <F2> :Bufferlist<CR>
+
+let g:replay_record = 1
+let g:replay_speed = 300
+
+function! FU()
+  r~/.vim/fu.txt
+endfunction
+
+nmap  :call FU()<CR>
+
+"Zenmode
+nnoremap <silent> <leader>z :Goyo<cr>
+let g:goyo_margin_top = 4
+let g:goyo_margin_bottom = 4
+let g:goyo_width = 60
