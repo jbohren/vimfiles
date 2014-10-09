@@ -249,6 +249,7 @@ command! -range SwapArgs <line1>,<line2>s/(\([^,]\+\),\s*\([^,)]\+\)/(\2, \1/ | 
 
 map <C-n> :NERDTreeToggle<CR>
 
+let g:loaded_ros = 1
 "AirLine
 set laststatus=2
 
