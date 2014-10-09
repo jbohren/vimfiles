@@ -46,6 +46,6 @@
 [submodule "bundle/vim-lua-ftplugin"]
 	path = bundle/vim-lua-ftplugin
 	url = git@github.com:xolox/vim-lua-ftplugin.git
-[submodule "bundle/bundle/vim-misc"]
-	path = bundle/bundle/vim-misc
+[submodule "bundle/vim-misc"]
+	path = bundle/vim-misc
 	url = git@github.com:xolox/vim-misc.git
