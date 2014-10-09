@@ -19,8 +19,9 @@ set complete=.,w,b,u,t,i
 
 set background=dark
 
-let g:molokai_original = 1
-colorscheme molokai
+"let g:molokai_original = 1
+"colorscheme molokai
+colorscheme potts
 
 " Favorite colorschemes
 "bvemu
@@ -174,6 +175,7 @@ autocmd BufRead,BufNewFile *.moin setfiletype moin
 autocmd BufRead,BufNewFile *.ops setfiletype cpp
 autocmd BufRead,BufNewFile *.msg setfiletype ruby
 autocmd BufRead,BufNewFile *.srv setfiletype ruby
+autocmd BufRead,BufNewFile *.rosinstall setfiletype yaml
 au! BufRead,BufNewFile *.json setfiletype json 
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif 
 
