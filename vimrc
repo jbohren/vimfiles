@@ -38,7 +38,7 @@ colorscheme molokai
 set guifont=monofur\ 11
 "set guifont=Monospace\ Bold\ 8
 "set guifont=-*-monofur-plain-*-*-*-9-*-*-*-*-*-*-*
-"set guioptions-=m  "remove menu bar
+set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 "
