@@ -46,9 +46,6 @@
 [submodule "bundle/vim-lua-ftplugin"]
 	path = bundle/vim-lua-ftplugin
 	url = git@github.com:xolox/vim-lua-ftplugin.git
-[submodule "bundle/vim-misc"]
-	path = bundle/vim-misc
-	url = git@github.com:xolox/vim-misc.git
 [submodule "_fonts/ttf-monofur-powerline"]
 	path = _fonts/ttf-monofur-powerline
 	url = git@github.com:rsrsl/ttf-monofur-powerline.git
@@ -67,3 +64,6 @@
 [submodule "bundle/csapprox"]
 	path = bundle/csapprox
 	url = git@github.com:godlygeek/csapprox.git
+[submodule "bundle/vim-misc"]
+	path = bundle/vim-misc
+	url = git@github.com:xolox/vim-misc.git
