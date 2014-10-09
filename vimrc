@@ -1,6 +1,6 @@
 " Pathogen vim bundle manager
 execute pathogen#infect()
-execute pathogen#helptags() 
+execute pathogen#helptags()
 
 syntax on
 filetype plugin indent on
@@ -21,7 +21,9 @@ set background=dark
 
 "let g:molokai_original = 1
 "colorscheme molokai
-colorscheme potts
+
+colorscheme luna
+"colorscheme potts
 
 " Favorite colorschemes
 "bvemu
@@ -36,7 +38,7 @@ colorscheme potts
 ""mustang
 "Tomorrow-Night-Eighties
 
-set guifont=monofur\ 11
+set guifont=monofur\ for\ Powerline\ 11
 "set guifont=Monospace\ Bold\ 8
 "set guifont=-*-monofur-plain-*-*-*-9-*-*-*-*-*-*-*
 "set guioptions-=m  "remove menu bar
@@ -171,13 +173,13 @@ autocmd BufRead,BufNewFile *.cpf setfiletype xml
 autocmd BufRead,BufNewFile *.test setfiletype xml
 autocmd BufRead,BufNewFile *.sdf setfiletype xml
 autocmd BufRead,BufNewFile *.world setfiletype xml
-autocmd BufRead,BufNewFile *.moin setfiletype moin 
+autocmd BufRead,BufNewFile *.moin setfiletype moin
 autocmd BufRead,BufNewFile *.ops setfiletype cpp
 autocmd BufRead,BufNewFile *.msg setfiletype ruby
 autocmd BufRead,BufNewFile *.srv setfiletype ruby
 autocmd BufRead,BufNewFile *.rosinstall setfiletype yaml
-au! BufRead,BufNewFile *.json setfiletype json 
-au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif 
+au! BufRead,BufNewFile *.json setfiletype json
+au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
 
 
 """""""""""""""""""""""""""""""""
@@ -250,8 +252,6 @@ command! -range SwapArgs <line1>,<line2>s/(\([^,]\+\),\s*\([^,)]\+\)/(\2, \1/ | 
 map <C-n> :NERDTreeToggle<CR>
 
 let g:loaded_ros = 1
-"AirLine
-set laststatus=2
 
 map <F2> :Bufferlist<CR>
 
@@ -269,3 +269,9 @@ nnoremap <silent> <leader>z :Goyo<cr>
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 let g:goyo_width = 81
+
+"AirLine
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+highlight clear SignColumn
