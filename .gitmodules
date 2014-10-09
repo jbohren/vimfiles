@@ -40,3 +40,12 @@
 [submodule "bundle/vim-goyo"]
 	path = bundle/vim-goyo
 	url = git@github.com:junegunn/goyo.vim.git
+[submodule "bundle/vim-json"]
+	path = bundle/vim-json
+	url = git@github.com:elzr/vim-json.git
+[submodule "bundle/vim-lua-ftplugin"]
+	path = bundle/vim-lua-ftplugin
+	url = git@github.com:xolox/vim-lua-ftplugin.git
+[submodule "bundle/bundle/vim-misc"]
+	path = bundle/bundle/vim-misc
+	url = git@github.com:xolox/vim-misc.git

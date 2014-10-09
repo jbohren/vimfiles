@@ -263,6 +263,6 @@ nmap  :call FU()<CR>
 
 "Zenmode
 nnoremap <silent> <leader>z :Goyo<cr>
-let g:goyo_margin_top = 4
-let g:goyo_margin_bottom = 4
-let g:goyo_width = 60
+let g:goyo_margin_top = 2
+let g:goyo_margin_bottom = 2
+let g:goyo_width = 81
