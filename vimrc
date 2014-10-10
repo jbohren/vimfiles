@@ -18,10 +18,8 @@ set cino+=(0,W4,t0
 set complete=.,w,b,u,t,i
 
 set background=dark
-
-"let g:molokai_original = 1
+let g:molokai_original = 1
 "colorscheme molokai
-
 colorscheme luna
 "colorscheme potts
 
