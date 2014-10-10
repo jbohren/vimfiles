@@ -175,8 +175,8 @@ autocmd BufRead,BufNewFile *.sdf setfiletype xml
 autocmd BufRead,BufNewFile *.world setfiletype xml
 autocmd BufRead,BufNewFile *.moin setfiletype moin
 autocmd BufRead,BufNewFile *.ops setfiletype cpp
-autocmd BufRead,BufNewFile *.msg setfiletype ruby
-autocmd BufRead,BufNewFile *.srv setfiletype ruby
+"autocmd BufRead,BufNewFile *.msg setfiletype ruby
+"autocmd BufRead,BufNewFile *.srv setfiletype ruby
 autocmd BufRead,BufNewFile *.rosinstall setfiletype yaml
 au! BufRead,BufNewFile *.json setfiletype json
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
