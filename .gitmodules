@@ -33,7 +33,7 @@
 	url = git@github.com:chrisbra/Replay.git
 [submodule "bundle/vim-ros"]
 	path = bundle/vim-ros
-	url = https://github.com/jbohren-forks/vim-ros.git
+	url = git@github.com:jbohren-forks/vim-ros.git
 [submodule "bundle/vim-zenmode"]
 	path = bundle/vim-zenmode
 	url = git://github.com/mmai/vim-zenmode.git
