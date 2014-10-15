@@ -18,15 +18,34 @@ set cino+=(0,W4,t0
 
 set complete=.,w,b,u,t,i
 
-"set background=dark
+set background=dark
+
+" Function to reverse background
+function! ReverseBackground()
+  if &bg=="light"
+    se bg=dark
+  else
+    se bg=light
+  endif
+endfunction
+command! RevBG call ReverseBackground()
+nnoremap <silent> <leader>r :RevBG<cr>
+
+if has('gui_running')
+  colorscheme base16-mocha
+else
+  "colorscheme base16-monokai
+  let base16colorspace=256  " Access colors present in 256 colorspace
+  let g:molokai_original = 1
+  colorscheme molokai
+endif
+
 "colorscheme hybrid
 "colorscheme luna
 "colorscheme mustang
 "colorscheme potts
-colorscheme Tomorrow
+"colorscheme Tomorrow
 
-let g:molokai_original = 1
-"colorscheme molokai
 
 "let g:solarized_termcolors=256
 "colorscheme solarized
@@ -45,13 +64,14 @@ let g:molokai_original = 1
 ""mustang
 "Tomorrow-Night-Eighties
 
-set guifont=monofur\ for\ Powerline\ 11
+set guifont=monofur\ for\ Powerline\ 14
 "set guifont=Monospace\ Bold\ 8
 "set guifont=-*-monofur-plain-*-*-*-9-*-*-*-*-*-*-*
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=l  "remove left-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
 "
 
 set foldmethod=syntax
