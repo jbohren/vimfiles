@@ -94,3 +94,6 @@
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = git@github.com:majutsushi/tagbar.git
+[submodule "bundle/vim-tomorrow-theme"]
+	path = bundle/vim-tomorrow-theme
+	url = git@github.com:chriskempson/vim-tomorrow-theme.git
