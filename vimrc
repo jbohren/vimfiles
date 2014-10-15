@@ -1,4 +1,5 @@
 " Pathogen vim bundle manager
+"
 execute pathogen#infect()
 execute pathogen#helptags()
 
@@ -18,10 +19,17 @@ set cino+=(0,W4,t0
 set complete=.,w,b,u,t,i
 
 set background=dark
-let g:molokai_original = 1
-"colorscheme molokai
-colorscheme luna
+"colorscheme hybrid
+"colorscheme luna
+"colorscheme mustang
 "colorscheme potts
+
+let g:molokai_original = 1
+colorscheme molokai
+
+"let g:solarized_termcolors=256
+"colorscheme solarized
+
 
 " Favorite colorschemes
 "bvemu
@@ -42,6 +50,7 @@ set guifont=monofur\ for\ Powerline\ 11
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=l  "remove left-hand scroll bar
 "
 
 set foldmethod=syntax
@@ -173,8 +182,8 @@ autocmd BufRead,BufNewFile *.sdf setfiletype xml
 autocmd BufRead,BufNewFile *.world setfiletype xml
 autocmd BufRead,BufNewFile *.moin setfiletype moin
 autocmd BufRead,BufNewFile *.ops setfiletype cpp
-"autocmd BufRead,BufNewFile *.msg setfiletype ruby
-"autocmd BufRead,BufNewFile *.srv setfiletype ruby
+autocmd BufRead,BufNewFile *.msg setfiletype ruby
+autocmd BufRead,BufNewFile *.srv setfiletype ruby
 autocmd BufRead,BufNewFile *.rosinstall setfiletype yaml
 au! BufRead,BufNewFile *.json setfiletype json
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
@@ -235,9 +244,9 @@ endif
 " ctags
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
-map <F4> :TlistToggle<cr>
-map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
-nmap <F6> :TagbarToggle<CR>
+autocmd FileType cpp map <F4> :TlistToggle<cr>
+autocmd FileType cpp map <buffer> <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
+autocmd FileType cpp nmap <F6> :TagbarToggle<CR>
 se tags+=~/.ctags/tags
 
 
@@ -270,6 +279,22 @@ let g:goyo_width = 81
 
 "AirLine
 set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
+"let g:airline_theme='dark'
+let g:airline_theme='powerlineish'
 highlight clear SignColumn
+
+"Python Flake8
+autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
+let g:flake8_max_line_length=120
+let g:flake8_max_complexity=15
+
+"ctrl-space
+set hidden
+let g:ctrlspace_use_mouse_and_arrows_in_term=0
+let g:airline_exclude_preview = 1
+
+
