@@ -194,7 +194,7 @@ if 0
 endif
 
 " Set the filetypes correctly
-autocmd BufRead,BufNewFile *.launch setfiletype xml
+autocmd BufRead,BufNewFile *.launch setfiletype roslaunch
 autocmd BufRead,BufNewFile *.urdf setfiletype xml
 autocmd BufRead,BufNewFile *.xacro setfiletype xml
 autocmd BufRead,BufNewFile *.cpf setfiletype xml
