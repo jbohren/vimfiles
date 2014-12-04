@@ -273,7 +273,7 @@ se tags+=~/.ctags/tags
 
 "au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
 
-nnoremap ` :GundoToggle<CR>
+"nnoremap ` :GundoToggle<CR>
 
 command! -range SwapArgs <line1>,<line2>s/(\([^,]\+\),\s*\([^,)]\+\)/(\2, \1/ | let @/ = ""
 
