@@ -100,3 +100,9 @@
 [submodule "bundle/base16-vim"]
 	path = bundle/base16-vim
 	url = git@github.com:chriskempson/base16-vim.git
+[submodule "bundle/vim-glsl"]
+	path = bundle/vim-glsl
+	url = https://github.com/tikhomirov/vim-glsl
+[submodule "bundle/vim-openscad"]
+	path = bundle/vim-openscad
+	url = git@github.com:sirtaj/vim-openscad.git
