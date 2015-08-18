@@ -32,7 +32,7 @@ command! RevBG call ReverseBackground()
 nnoremap <silent> <leader>r :RevBG<cr>
 
 if has('gui_running')
-  colorscheme base16-mocha
+  colorscheme gruvbox
 else
   "colorscheme base16-monokai
   let base16colorspace=256  " Access colors present in 256 colorspace

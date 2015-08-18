@@ -106,3 +106,6 @@
 [submodule "bundle/vim-openscad"]
 	path = bundle/vim-openscad
 	url = git@github.com:sirtaj/vim-openscad.git
+[submodule "bundle/gruvbox"]
+	path = bundle/gruvbox
+	url = git@github.com:morhetz/gruvbox.git
