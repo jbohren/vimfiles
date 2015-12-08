@@ -32,7 +32,8 @@ command! RevBG call ReverseBackground()
 nnoremap <silent> <leader>r :RevBG<cr>
 
 if has('gui_running')
-  colorscheme base16-mocha
+  "colorscheme base16-mocha
+  colorscheme gruvbox
 else
   "colorscheme base16-monokai
   let base16colorspace=256  " Access colors present in 256 colorspace
@@ -113,10 +114,14 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 let g:tex_flavor='latex'
 let g:Imap_UsePlaceHolders = 0
 let g:Imap_FreezeImap = 1
+let g:Tex_GotoWarning=0
+let g:Tex_GotoError=0
+
 
 let g:Tex_CompileRule_pdf = 'pdflatex --interaction=nonstopmode $*'
 let g:Tex_ViewRule_pdf = 'evince $*'
 let g:Tex_IgnoreLevel = 5
+let g:Tex_FoldedSections = 'part,chapter,section,%%fakesection,subsection,subsubsection,paragraph'
 
 " Crazy keys
 map k g<UP>
@@ -306,7 +311,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 "let g:airline_theme='dark'
 "let g:airline_theme='powerlineish'
-highlight clear SignColumn
 
 "Python Flake8
 autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
@@ -318,4 +322,23 @@ set hidden
 let g:ctrlspace_use_mouse_and_arrows_in_term=0
 let g:airline_exclude_preview = 1
 
+"js
+au FileType javascript call JavaScriptFold()
 
+"git gutter
+highlight clear SignColumn
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+
+" ruby folding is super slow this is a hack to fix it in insert mode
+" Don't screw up folds when inserting text that might affect them, until
+" leaving insert mode. Foldmethod is local to the window.
+"autocmd InsertEnter * let w:last_fdm=&foldmethod | setlocal foldmethod=manual
+"autocmd InsertLeave * let &l:foldmethod=w:last_fdm
+
+autocmd BufReadPost quickfix AnsiEsc
+set makeprg=catkin\ build\ --no-status\ --force-color
+
+" table mode
+let g:table_mode_corner_corner="+"
+let g:table_mode_header_fillchar="="

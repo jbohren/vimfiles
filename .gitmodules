@@ -103,3 +103,15 @@
 [submodule "bundle/vim-javascript-syntax"]
 	path = bundle/vim-javascript-syntax
 	url = https://github.com/jelera/vim-javascript-syntax.git
+[submodule "bundle/vim-liquid"]
+	path = bundle/vim-liquid
+	url = git@github.com:tpope/vim-liquid.git
+[submodule "bundle/gruvbox"]
+	path = bundle/gruvbox
+	url = git@github.com:morhetz/gruvbox.git
+[submodule "bundle/vim-plugin-AnsiEsc"]
+	path = bundle/vim-plugin-AnsiEsc
+	url = git@github.com:powerman/vim-plugin-AnsiEsc.git
+[submodule "bundle/table-mode"]
+	path = bundle/table-mode
+	url = git@github.com:dhruvasagar/vim-table-mode.git
