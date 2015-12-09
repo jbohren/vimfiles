@@ -37,8 +37,7 @@ else
   "colorscheme base16-monokai
   let base16colorspace=256  " Access colors present in 256 colorspace
   let g:molokai_original = 1
-  "colorscheme molokai
-  colorscheme luna
+  colorscheme molokai
 endif
 
 "colorscheme hybrid
