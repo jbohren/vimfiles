@@ -30,6 +30,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 
 Bundle 'Valloric/YouCompleteMe'
 
+Plugin 'drmikehenry/vim-fontsize'
 Plugin 'vim-scripts/buffet.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
