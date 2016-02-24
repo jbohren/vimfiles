@@ -1,19 +1,106 @@
-" Pathogen vim bundle manager
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+let g:vundle_default_git_proto = 'git'
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+"Plugin 'user/L9', {'name': 'newL9'}
+
+Bundle 'Valloric/YouCompleteMe'
+
+Plugin 'vim-scripts/buffet.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+
+Plugin 'tomasr/molokai'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'ingydotnet/yaml-vim'
+Plugin 'sgeb/vim-matlab'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-liquid'
+Plugin 'gerw/vim-latex-suite'
+Plugin 'xuhdev/vim-latex-live-preview'
+Plugin 'groenewege/vim-less'
+Plugin 'bling/vim-airline'
+Plugin 'chrisbra/Replay'
+Plugin 'jbohren-forks/vim-ros'
+Plugin 'mmai/vim-zenmode'
+Plugin 'junegunn/goyo.vim'
+Plugin 'elzr/vim-json'
+Plugin 'xolox/vim-lua-ftplugin'
+Plugin 'jbohren-forks/vim-gitgutter'
+Plugin 'Pychimp/vim-luna'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'godlygeek/csapprox'
+Plugin 'xolox/vim-misc'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'dsolstad/vim-wombat256i'
+Plugin 'nvie/vim-flake8'
+Plugin 'roblillack/vim-bufferlist'
+Plugin 'szw/vim-ctrlspace'
+Plugin 'majutsushi/tagbar'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'chriskempson/base16-vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'powerman/vim-plugin-AnsiEsc'
+Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'tikhomirov/vim-glsl'
+Plugin 'sirtaj/vim-openscad'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
 "
-execute pathogen#infect()
-execute pathogen#helptags()
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
 
 syntax on
-filetype plugin indent on
+"filetype plugin indent on
 
-set nocompatible
-set timeout timeoutlen=3000 ttimeoutlen=100
+"set nocompatible
+"set timeout timeoutlen=3000 ttimeoutlen=100
 "source $VIMRUNTIME/vimrc_example.vim
 "source $VIMRUNTIME/mswin.vim
 "behave mswin
 
-set cinoptions=g0
-set cino+=(0,W4,t0
+"set cinoptions=g0
+"set cino+=(0,W4,t0
 "set cinoptions=:0,l1,t0,g0,(0
 
 set complete=.,w,b,u,t,i
@@ -37,21 +124,16 @@ else
   "colorscheme base16-monokai
   let base16colorspace=256  " Access colors present in 256 colorspace
   let g:molokai_original = 1
-  colorscheme molokai
+  colorscheme gruvbox
 endif
 
+
+" Favorite colorschemes
 "colorscheme hybrid
 "colorscheme luna
 "colorscheme mustang
 "colorscheme potts
 "colorscheme Tomorrow
-
-
-"let g:solarized_termcolors=256
-"colorscheme solarized
-
-
-" Favorite colorschemes
 "bvemu
 ""getafe
 "thor
@@ -63,6 +145,8 @@ endif
 "twilight
 ""mustang
 "Tomorrow-Night-Eighties
+"let g:solarized_termcolors=256
+"colorscheme solarized
 
 set guifont=monofur\ for\ Powerline\ 14
 "set guifont=Monospace\ Bold\ 8
@@ -72,7 +156,6 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=l  "remove left-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
-"
 
 set foldmethod=syntax
 set foldlevel=1000
@@ -139,63 +222,6 @@ map <C-LEFT> <LEFT>
 map <C-RIGHT> <RIGHT>
 map <C-UP> <UP>
 map <C-DOWN> <DOWN>
-
-if 0
-  " Terminal colors
-  "*Comment	any comment
-
-  "*Constant			any constant
-  "String					a string constant: "this is a string"
-  "hi String ctermfg=red
-  "Character			a character constant: 'c', '\n'
-  "Number					a number constant: 234, 0xff
-  hi Number ctermfg=blue
-  "Boolean				a boolean constant: TRUE, false
-  hi Boolean ctermfg=blue
-  "Float					a floating point constant: 2.3e10
-
-  "*Identifier		any variable name
-  "Function				function name (also: methods for classes)
-
-  "*Statement			any statement
-  "Conditional		if, then, else, endif, switch, etc.
-  "Repeat					for, do, while, etc.
-  "Label					case, default, etc.
-  "Operator				"sizeof", "+", "*", etc.
-  "Keyword				any other keyword
-  "Exception			try, catch, throw
-
-  "*PreProc				generic Preprocessor
-  hi PreProc ctermfg=red
-  "Include				preprocessor #include
-  "Define					preprocessor #define
-  "Macro					same as Define
-  "PreCondit			preprocessor #if, #else, #endif, etc.
-
-  "*Type					int, long, char, etc.
-  "StorageClass		static, register, volatile, etc.
-  "Structure			struct, union, enum, etc.
-  "Typedef				A typedef
-
-  "*Special				any special symbol
-  "SpecialChar		special character in a constant
-  "Tag						you can use CTRL-] on this
-  "Delimiter			character that needs attention
-  "SpecialComment	special things inside a comment
-  "Debug					debugging statements
-
-  "*Underlined		text that stands out, HTML links
-
-  "*Ignore				left blank, hidden
-
-  "*Error					any erroneous construct
-
-  "*Todo					anything that needs extra attention; mostly the
-  "								keywords TODO FIXME and XXX
-
-  "LineNr
-  hi LineNr ctermfg=cyan
-endif
 
 " Set the filetypes correctly
 autocmd BufRead,BufNewFile *.launch setfiletype roslaunch
@@ -341,3 +367,21 @@ set makeprg=catkin\ build\ --no-status\ --force-color
 " table mode
 let g:table_mode_corner_corner="+"
 let g:table_mode_header_fillchar="="
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+let g:SimpylFold_docstring_preview=1
+
+au BufNewFile,BufRead *.py
+      \ set tabstop=4
+      \ set softtabstop=4
+      \ set shiftwidth=4
+      \ set textwidth=79
+      \ set expandtab
+      \ set autoindent
+      \ set fileformat=unix
+
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+

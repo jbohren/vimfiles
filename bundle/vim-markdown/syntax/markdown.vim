@@ -2,6 +2,7 @@
 " Language:     Markdown
 " Maintainer:   Tim Pope <vimNOSPAM@tpope.org>
 " Filenames:    *.markdown
+" Last Change:  2013 May 30
 
 if exists("b:current_syntax")
   finish
@@ -17,14 +18,20 @@ unlet! b:current_syntax
 if !exists('g:markdown_fenced_languages')
   let g:markdown_fenced_languages = []
 endif
+let s:done_include = {}
 for s:type in map(copy(g:markdown_fenced_languages),'matchstr(v:val,"[^=]*$")')
+  if has_key(s:done_include, matchstr(s:type,'[^.]*'))
+    continue
+  endif
   if s:type =~ '\.'
     let b:{matchstr(s:type,'[^.]*')}_subtype = matchstr(s:type,'\.\zs.*')
   endif
   exe 'syn include @markdownHighlight'.substitute(s:type,'\.','','g').' syntax/'.matchstr(s:type,'[^.]*').'.vim'
   unlet! b:current_syntax
+  let s:done_include[matchstr(s:type,'[^.]*')] = 1
 endfor
 unlet! s:type
+unlet! s:done_include
 
 syn sync minlines=10
 syn case ignore
@@ -69,29 +76,40 @@ syn region markdownUrlTitle matchgroup=markdownUrlTitleDelimiter start=+"+ end=+
 syn region markdownUrlTitle matchgroup=markdownUrlTitleDelimiter start=+'+ end=+'+ keepend contained
 syn region markdownUrlTitle matchgroup=markdownUrlTitleDelimiter start=+(+ end=+)+ keepend contained
 
-syn region markdownLinkText matchgroup=markdownLinkTextDelimiter start="!\=\[\%(\_[^]]*]\%( \=[[(]\)\)\@=" end="\]\%( \=[[(]\)\@=" keepend nextgroup=markdownLink,markdownId skipwhite contains=@markdownInline,markdownLineStart
+syn region markdownLinkText matchgroup=markdownLinkTextDelimiter start="!\=\[\%(\_[^]]*]\%( \=[[(]\)\)\@=" end="\]\%( \=[[(]\)\@=" nextgroup=markdownLink,markdownId skipwhite contains=@markdownInline,markdownLineStart
 syn region markdownLink matchgroup=markdownLinkDelimiter start="(" end=")" contains=markdownUrl keepend contained
 syn region markdownId matchgroup=markdownIdDelimiter start="\[" end="\]" keepend contained
 syn region markdownAutomaticLink matchgroup=markdownUrlDelimiter start="<\%(\w\+:\|[[:alnum:]_+-]\+@\)\@=" end=">" keepend oneline
 
-syn region markdownItalic start="\S\@<=\*\|\*\S\@=" end="\S\@<=\*\|\*\S\@=" keepend contains=markdownLineStart
-syn region markdownItalic start="\S\@<=_\|_\S\@=" end="\S\@<=_\|_\S\@=" keepend contains=markdownLineStart
-syn region markdownBold start="\S\@<=\*\*\|\*\*\S\@=" end="\S\@<=\*\*\|\*\*\S\@=" keepend contains=markdownLineStart,markdownItalic
-syn region markdownBold start="\S\@<=__\|__\S\@=" end="\S\@<=__\|__\S\@=" keepend contains=markdownLineStart,markdownItalic
-syn region markdownBoldItalic start="\S\@<=\*\*\*\|\*\*\*\S\@=" end="\S\@<=\*\*\*\|\*\*\*\S\@=" keepend contains=markdownLineStart
-syn region markdownBoldItalic start="\S\@<=___\|___\S\@=" end="\S\@<=___\|___\S\@=" keepend contains=markdownLineStart
+let s:concealends = has('conceal') ? ' concealends' : ''
+exe 'syn region markdownItalic matchgroup=markdownItalicDelimiter start="\S\@<=\*\|\*\S\@=" end="\S\@<=\*\|\*\S\@=" keepend contains=markdownLineStart' . s:concealends
+exe 'syn region markdownItalic matchgroup=markdownItalicDelimiter start="\S\@<=_\|_\S\@=" end="\S\@<=_\|_\S\@=" keepend contains=markdownLineStart' . s:concealends
+exe 'syn region markdownBold matchgroup=markdownBoldDelimiter start="\S\@<=\*\*\|\*\*\S\@=" end="\S\@<=\*\*\|\*\*\S\@=" keepend contains=markdownLineStart,markdownItalic' . s:concealends
+exe 'syn region markdownBold matchgroup=markdownBoldDelimiter start="\S\@<=__\|__\S\@=" end="\S\@<=__\|__\S\@=" keepend contains=markdownLineStart,markdownItalic' . s:concealends
+exe 'syn region markdownBoldItalic matchgroup=markdownBoldItalicDelimiter start="\S\@<=\*\*\*\|\*\*\*\S\@=" end="\S\@<=\*\*\*\|\*\*\*\S\@=" keepend contains=markdownLineStart' . s:concealends
+exe 'syn region markdownBoldItalic matchgroup=markdownBoldItalicDelimiter start="\S\@<=___\|___\S\@=" end="\S\@<=___\|___\S\@=" keepend contains=markdownLineStart' . s:concealends
+
 syn region markdownCode matchgroup=markdownCodeDelimiter start="`" end="`" keepend contains=markdownLineStart
 syn region markdownCode matchgroup=markdownCodeDelimiter start="`` \=" end=" \=``" keepend contains=markdownLineStart
-syn region markdownCode matchgroup=markdownCodeDelimiter start="^\s*```.*$" end="^\s*```\ze\s*$" keepend
+syn region markdownCode matchgroup=markdownCodeDelimiter start="^\s*```*.*$" end="^\s*```*\ze\s*$" keepend
+
+syn match markdownFootnote "\[^[^\]]\+\]"
+syn match markdownFootnoteDefinition "^\[^[^\]]\+\]:"
 
 if main_syntax ==# 'markdown'
+  let s:done_include = {}
   for s:type in g:markdown_fenced_languages
-    exe 'syn region markdownHighlight'.substitute(matchstr(s:type,'[^=]*$'),'\..*','','').' matchgroup=markdownCodeDelimiter start="^\s*```\s*'.matchstr(s:type,'[^=]*').'\>.*$" end="^\s*```\ze\s*$" keepend contains=@markdownHighlight'.substitute(matchstr(s:type,'[^=]*$'),'\.','','g')
+    if has_key(s:done_include, matchstr(s:type,'[^.]*'))
+      continue
+    endif
+    exe 'syn region markdownHighlight'.substitute(matchstr(s:type,'[^=]*$'),'\..*','','').' matchgroup=markdownCodeDelimiter start="^\s*```*\s*'.matchstr(s:type,'[^=]*').'\>.*$" end="^\s*```*\ze\s*$" keepend contains=@markdownHighlight'.substitute(matchstr(s:type,'[^=]*$'),'\.','','g')
+    let s:done_include[matchstr(s:type,'[^.]*')] = 1
   endfor
   unlet! s:type
+  unlet! s:done_include
 endif
 
-syn match markdownEscape "\\[][\\`*_{}()#+.!-]"
+syn match markdownEscape "\\[][\\`*_{}()<>#+.!-]"
 syn match markdownError "\w\@<=_\w\@="
 
 hi def link markdownH1                    htmlH1
@@ -107,6 +125,9 @@ hi def link markdownListMarker            htmlTagName
 hi def link markdownBlockquote            Comment
 hi def link markdownRule                  PreProc
 
+hi def link markdownFootnote              Typedef
+hi def link markdownFootnoteDefinition    Typedef
+
 hi def link markdownLinkText              htmlLink
 hi def link markdownIdDeclaration         Typedef
 hi def link markdownId                    Type
@@ -118,19 +139,15 @@ hi def link markdownUrlDelimiter          htmlTag
 hi def link markdownUrlTitleDelimiter     Delimiter
 
 hi def link markdownItalic                htmlItalic
+hi def link markdownItalicDelimiter       markdownItalic
 hi def link markdownBold                  htmlBold
+hi def link markdownBoldDelimiter         markdownBold
 hi def link markdownBoldItalic            htmlBoldItalic
+hi def link markdownBoldItalicDelimiter   markdownBoldItalic
 hi def link markdownCodeDelimiter         Delimiter
 
 hi def link markdownEscape                Special
 hi def link markdownError                 Error
-
-" Handle liquid tags
-syn region lqdHighlight     start=/^{%\s*highlight\(\s\+\w\+\)\{0,1}\s*%}$/ end=/{%\s*endhighlight\s*%}/ contains=@Spell
-syn region jkyFrontMatter   start=/\%^---$/                                 end=/^---$/                  contains=@Spell
-"HtmlHiLink lqdHighlight     String
-"HtmlHiLink jkyFrontMatter   String
-
 
 let b:current_syntax = "markdown"
 if main_syntax ==# 'markdown'

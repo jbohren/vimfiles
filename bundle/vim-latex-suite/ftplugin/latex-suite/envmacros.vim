@@ -228,6 +228,9 @@ call s:Tex_SpecialMacros('ETR', '&Tables.', 'tabular', s:tabular)
 call s:Tex_SpecialMacros('', '&Tables.', 'tabular*', s:tabular_star)
 " }}}
 " Math {{{
+call s:Tex_EnvMacros('EAL', '&Math.', 'align')
+call s:Tex_EnvMacros('EAS', '&Math.', 'align*')
+call s:Tex_EnvMacros('EAD', '&Math.', 'aligned')
 call s:Tex_EnvMacros('EAR', '&Math.', 'array')
 call s:Tex_EnvMacros('EDM', '&Math.', 'displaymath')
 call s:Tex_EnvMacros('EEA', '&Math.', 'eqnarray')
@@ -235,9 +238,6 @@ call s:Tex_EnvMacros('',    '&Math.', 'eqnarray*')
 call s:Tex_EnvMacros('EEQ', '&Math.', 'equation')
 call s:Tex_EnvMacros('EES', '&Math.', 'equation*')
 call s:Tex_EnvMacros('EMA', '&Math.', 'math')
-call s:Tex_EnvMacros('EAL', '&Math.', 'align')
-call s:Tex_EnvMacros('EAS', '&Math.', 'align*')
-call s:Tex_EnvMacros('EAD', '&Math.', 'aligned')
 " }}}
 " Structure {{{
 call s:Tex_SpecialMacros('EAR', 'Math.', 'array', s:array)
@@ -664,7 +664,7 @@ if g:Tex_PromptedEnvironments != ''
 			" the file, then a part of the file is the preamble.
 
 			" search for where the document begins.
-			let begin_line = search('\\begin{document}')
+			let begin_line = search('\\begin{document}', 'c')
 			" if the document begins after where we are presently, then we are
 			" in the preamble.
 			if start_line < begin_line
@@ -678,7 +678,7 @@ if g:Tex_PromptedEnvironments != ''
 				return Tex_DoEnvironment()
 			endif
 
-		elseif search('\\documentclass')
+		elseif search('\\documentclass', 'bW')
 			" if there is only a \documentclass but no \begin{document}, then
 			" the entire file is a preamble. Put a package.
 
@@ -708,7 +708,15 @@ if g:Tex_PromptedEnvironments != ''
 			let l = getline(".")
 			let pack = matchstr(l, '^\s*\zs.*')
 			normal!  0"_D
-			return Tex_pack_one(pack)
+
+			" If the g:Tex_PackagesMenu variable is set to zero,
+			" the function Tex_pack_one is not defined. In this case
+			" we use a very simple replacement.
+			if has('*Tex_pack_one')
+				return Tex_pack_one(pack)
+			else
+				return IMAP_PutTextWithMovement('\usepackage{'.pack."}\<CR>", '<+', '+>')
+			endif
 		endif
 	endfunction 
 	
@@ -722,7 +730,7 @@ if g:Tex_PromptedEnvironments != ''
 	"
 	function! Tex_ChangeEnvironments() 
 
-		let env_line = searchpair('\$\$\|\\\[\|begin{', '', '\$\$\|\\\]\|end{', "bn")
+		let env_line = searchpair('\$\$\|\\\[\|\\begin{', '', '\$\$\|\\\]\|\\end{.\{-}}\zs', "bncW")
 
 		if env_line != 0
 			if getline(env_line) !~ 'begin{'
@@ -779,17 +787,17 @@ if g:Tex_PromptedEnvironments != ''
 		let start_line = line('.')
 		let start_col = virtcol('.')
 
-		if a:env == '['
+		if a:env == '[' || a:env == '\['
 			if b:DoubleDollars == 0
-				let first = '\\['
-				let second = '\\]'
+				let first = '\['
+				let second = '\]'
 			else
 				let first = '$$'
 				let second = '$$'
 			endif
 		else
-			let first = '\\begin{' . a:env . '}'
-			let second = '\\end{' . a:env . '}'
+			let first = '\begin{' . a:env . '}'
+			let second = '\end{' . a:env . '}'
 		endif
 
 		if b:DoubleDollars == 0
@@ -831,9 +839,9 @@ if g:Tex_PromptedEnvironments != ''
 		endif
 
 		if exists('local_label') && local_label != ''
-			exe start_line + 1.' | normal! '.start_col.'|'
+			exe 'silent!' start_line + 1.' | silent! normal! '.start_col.'|'
 		else
-			exe start_line.' | normal! '.start_col.'|'
+			exe 'silent!' start_line.' | silent! normal! '.start_col.'|'
 		endif
 	endfunction " }}}
 
