@@ -73,6 +73,8 @@ Plugin 'tikhomirov/vim-glsl'
 Plugin 'sirtaj/vim-openscad'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'xolox/vim-session'
+Plugin 'junegunn/vim-easy-align'
 
 
 " All of your Plugins must be added before the following line
@@ -199,6 +201,7 @@ let g:Imap_UsePlaceHolders = 0
 let g:Imap_FreezeImap = 1
 let g:Tex_GotoWarning=0
 let g:Tex_GotoError=0
+let g:Tex_MultipleCompileFormats='pdf'
 
 
 let g:Tex_CompileRule_pdf = 'pdflatex --interaction=nonstopmode $*'
@@ -218,26 +221,26 @@ map , g<DOWN>
 "imap <UP> <ESC>g<UP>a
 "imap <DOWN> <ESC>g<DOWN>a
 
-imap <C-W> <ESC><C-W>
-map <C-LEFT> <LEFT>
-map <C-RIGHT> <RIGHT>
-map <C-UP> <UP>
-map <C-DOWN> <DOWN>
+imap <C-W>     <ESC><C-W>
+map  <C-LEFT>  <LEFT>
+map  <C-RIGHT> <RIGHT>
+map  <C-UP>    <UP>
+map  <C-DOWN>  <DOWN>
 
 " Set the filetypes correctly
-autocmd BufRead,BufNewFile *.launch setfiletype roslaunch
-autocmd BufRead,BufNewFile *.urdf setfiletype xml
-autocmd BufRead,BufNewFile *.xacro setfiletype xml
-autocmd BufRead,BufNewFile *.cpf setfiletype xml
-autocmd BufRead,BufNewFile *.test setfiletype xml
-autocmd BufRead,BufNewFile *.sdf setfiletype xml
-autocmd BufRead,BufNewFile *.world setfiletype xml
-autocmd BufRead,BufNewFile *.moin setfiletype moin
-autocmd BufRead,BufNewFile *.ops setfiletype cpp
-autocmd BufRead,BufNewFile *.msg setfiletype ruby
-autocmd BufRead,BufNewFile *.srv setfiletype ruby
+autocmd BufRead,BufNewFile *.launch     setfiletype roslaunch
+autocmd BufRead,BufNewFile *.urdf       setfiletype xml
+autocmd BufRead,BufNewFile *.xacro      setfiletype xml
+autocmd BufRead,BufNewFile *.cpf        setfiletype xml
+autocmd BufRead,BufNewFile *.test       setfiletype xml
+autocmd BufRead,BufNewFile *.sdf        setfiletype xml
+autocmd BufRead,BufNewFile *.world      setfiletype xml
+autocmd BufRead,BufNewFile *.moin       setfiletype moin
+autocmd BufRead,BufNewFile *.ops        setfiletype cpp
+autocmd BufRead,BufNewFile *.msg        setfiletype ruby
+autocmd BufRead,BufNewFile *.srv        setfiletype ruby
 autocmd BufRead,BufNewFile *.rosinstall setfiletype yaml
-au! BufRead,BufNewFile *.json setfiletype json
+au! BufRead,BufNewFile *.json           setfiletype json
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
 
 
@@ -385,4 +388,10 @@ au BufNewFile,BufRead *.py
 
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+let g:ycm_server_python_interpreter = "/usr/bin/python"
+
+
+" Easy align interactive
+vnoremap <silent> <Enter> :EasyAlign<cr>
 
