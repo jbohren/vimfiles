@@ -36,7 +36,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 
 Plugin 'tomasr/molokai'
-Plugin 'flazz/vim-colorschemes'
+"Plugin 'flazz/vim-colorschemes'
+Plugin 'morhetz/gruvbox'
 Plugin 'ingydotnet/yaml-vim'
 Plugin 'sgeb/vim-matlab'
 Plugin 'tpope/vim-surround'
@@ -75,6 +76,9 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'xolox/vim-session'
 Plugin 'junegunn/vim-easy-align'
+
+"http://daylerees.github.io/
+Plugin 'daylerees/colour-schemes', {'rtp': 'vim/'}
 
 
 " All of your Plugins must be added before the following line
@@ -355,7 +359,7 @@ let g:airline_exclude_preview = 1
 au FileType javascript call JavaScriptFold()
 
 "git gutter
-highlight clear SignColumn
+"highlight clear SignColumn
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
