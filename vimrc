@@ -28,7 +28,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 
 Plugin 'drmikehenry/vim-fontsize'
 Plugin 'vim-scripts/buffet.vim'
